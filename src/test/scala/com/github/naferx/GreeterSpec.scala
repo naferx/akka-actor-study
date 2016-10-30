@@ -2,7 +2,6 @@ package com.github.naferx
 
 
 import akka.actor.ActorSystem
-import akka.testkit.{TestActorRef, TestProbe}
 import com.typesafe.config.ConfigFactory
 
 import scala.concurrent.duration._
@@ -11,7 +10,7 @@ object GreeterSpec {
   val cfg =
     ConfigFactory.parseString("""
       akka {
-        loglevel = "INFO"
+          loglevel = "DEBUG"
       }
                               """.stripMargin)
 }
@@ -31,6 +30,7 @@ final class GreeterSpec
         expectMsg("Hello Software Developer!")
         actorRef ! "Pepito"
         expectMsg("Hello Pepito!")
+        actorRef ! 1
       }
     }
  }

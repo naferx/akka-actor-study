@@ -11,7 +11,16 @@ object BalanceadorCotizadorSpec {
   val cfg =
     ConfigFactory.parseString("""
       akka {
+        loggers = ["akka.testkit.TestEventListener"]
         loglevel = "INFO"
+        log-dead-letters = 10
+        log-dead-letters-during-shutdown = on
+        actor {
+          debug {
+            autoreceive = on
+            lifecycle = on
+          }
+        }
       }
                               """.stripMargin)
 }
@@ -39,6 +48,8 @@ final class BalanceadorCotizadorSpec
 
         balanceador ! CotizaPoliza("SEG-00002")
         expectMsg(PolizaCotizada("SEG-00002"))
+
+        balanceador ! "MensajeDesconocido"
       }
     }
   }
