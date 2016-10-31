@@ -14,7 +14,6 @@ libraryDependencies ++= Seq(
     // Utils
     "com.typesafe"          %     "config"            %   "1.3.1",
 
-
     // Testing
     "org.scalatest"         %%    "scalatest"         %   "3.0.0"      %  Test,
     "com.typesafe.akka"     %%    "akka-testkit"      %   akkaVersion  %  Test

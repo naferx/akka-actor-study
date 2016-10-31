@@ -48,8 +48,6 @@ final class BalanceadorCotizadorSpec
 
         balanceador ! CotizaPoliza("SEG-00002")
         expectMsg(PolizaCotizada("SEG-00002"))
-
-        balanceador ! "MensajeDesconocido"
       }
     }
   }
