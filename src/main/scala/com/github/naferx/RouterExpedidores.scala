@@ -2,7 +2,7 @@ package com.github.naferx
 
 
 import akka.actor.{Actor, Props, Terminated}
-import akka.routing.{ActorRefRoutee, RoundRobinRoutingLogic, Router}
+import akka.routing.{ActorRefRoutee, RandomRoutingLogic, Router}
 
 object RouterExpedidores {
   def props: Props = Props(new RouterExpedidores)
@@ -18,7 +18,7 @@ final class RouterExpedidores extends Actor {
       context watch r
       ActorRefRoutee(r)
     }
-    Router(RoundRobinRoutingLogic(), routees)
+    Router(RandomRoutingLogic(), routees)
   }
 
   def receive = {
